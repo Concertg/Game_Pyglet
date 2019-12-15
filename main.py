@@ -25,7 +25,7 @@ def update(dt):
 def on_draw():
     window.clear()
     glLoadIdentity()
-    glColor4f(1., 0., 0., 0.75)
+    glColor4f(1., 0., 0., 0.5)
     glBegin(GL_TRIANGLE_FAN)
     for angle in range(0, 360, 10):
         rads = math.radians(angle)
@@ -37,5 +37,7 @@ def on_draw():
 
 
 gl.glClearColor(*BG_COLOR)
+gl.glEnable(gl.GL_BLEND)
+gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
 pyglet.clock.schedule_interval(update, 1 / 60.0)
 pyglet.app.run()
